@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
 
 HOSTS_FILE_START_MARKER = "# ! docker-hosts-update start !"
-HOSTS_FILE_END_MARKER = "# ! docker-hosts-update end   !"
+HOSTS_FILE_END_MARKER = "# ! docker-hosts-update end   !\n"
 
 
 def map_hosts() -> Dict[str, List[str]]:
@@ -87,11 +87,12 @@ def _triggering_event(event: dict):
 @click.command()
 @click.option('--hosts-file', default='/etc/hosts', help='The hosts file to update.')
 @click.option('--once', default=False, help='Run the update script once only.', is_flag=True)
-@click.option('--initial', default=True, help='Run the update script one time before hooking into the docker event stream.', is_flag=True)
+@click.option('--skip-initial', default=False, help="Don't run the update script one time before hooking into the docker event stream.", is_flag=True)
 @click_log.simple_verbosity_option(logger)
-def main(hosts_file: str, initial: bool, once: bool):
+def main(hosts_file: str, skip_initial: bool, once: bool):
+    """Program that automatically updates your `/etc/hosts` file based on your running docker containers."""
     client = docker.from_env()
-    if initial or once:
+    if not skip_initial or once:
         if not update_hosts_file(hosts_file):
             logger.error(f'Failed to update hosts in {hosts_file}')
             return -1

@@ -18,7 +18,7 @@ setup(
         url='https://github.com/Tethik/docker_hosts_update',
         py_modules=['docker_hosts_update'],
         entry_points = {
-            'console_scripts': ['docker_hosts_update=docker_hosts_update:main'],
+            'console_scripts': ['docker-hosts-update=docker_hosts_update:main'],
         },
         package_data={'': ['LICENSE', 'README.md']},
         include_package_data=True,
