@@ -3,7 +3,7 @@
 `docker_hosts_update` is a small program that automatically updates your `/etc/hosts` file,
 giving your docker containers hostnames.
 
-By default the containers will be given a hostname of `{container name}.{network nake}`.
+By default the containers will be given a hostname of `{container name}.{network name}`.
 E.g. The `hello-world` container running in the `corp.internal` network and the `nginx` container
 running in the default `bridge` network will be written to your hosts file something like the following. 
 ```
@@ -13,7 +13,7 @@ running in the default `bridge` network will be written to your hosts file somet
 
 ## Install
 ```bash
-pip install docker_hosts_update
+pip3 install -U docker_hosts_update "git+https://github.com/Spielstunde/docker-hosts-update#egg=docker-hosts-update"
 ```
 
 

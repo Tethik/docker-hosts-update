@@ -96,10 +96,12 @@ def main(hosts_file: str, skip_initial: bool, once: bool):
         if not update_hosts_file(hosts_file):
             logger.error(f'Failed to update hosts in {hosts_file}')
             return -1
+        logger.info('Initial update done.')
             
     if once:
         return 0
-
+    
+    logger.info('Going to listen for docker events now')
     for event in client.events(decode=True):
         logger.debug(f'Docker event: {event}')
 
