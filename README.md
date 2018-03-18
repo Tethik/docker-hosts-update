@@ -1,6 +1,7 @@
 # Readme
 
-`docker_hosts_update` is a small program that automatically updates your `/etc/hosts` file 
+`docker_hosts_update` is a small program that automatically updates your `/etc/hosts` file,
+giving your docker containers hostnames.
 
 By default the containers will be given a hostname of `{container name}.{network nake}`.
 E.g. The `hello-world` container running in the `corp.internal` network and the `nginx` container
@@ -52,11 +53,6 @@ WantedBy=multi-user.target
 ```
 
 
-
-Todo before publish:
-* pypi publish
-* tests for main
-
 Future features / ideas:
 * configurable host name format
 * whitelist / blacklist
@@ -64,6 +60,7 @@ Future features / ideas:
 * user desktop notifications
 * ui to toggle whitelist/blacklist 
 * completely different package `docker-event-template` (like `consul-template` with a better templating language)
+* another os service: hostctl, just for managing the hosts file (with unix socket to communicate over).
 * service security
     * https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Capabilities
     * CAP_FOWNER ?

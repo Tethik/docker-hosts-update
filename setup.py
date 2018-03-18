@@ -15,7 +15,7 @@ setup(
         author_email='tethik@gmail.com',
         description='Service that automatically updates your /etc/hosts file based on your running docker containers.',
         long_description=README,
-        url='https://github.com/Tethik/docker_hosts_update',
+        url='https://github.com/Spielstunde/docker_hosts_update',
         py_modules=['docker_hosts_update'],
         entry_points = {
             'console_scripts': ['docker-hosts-update=docker_hosts_update:main'],
