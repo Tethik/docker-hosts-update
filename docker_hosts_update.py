@@ -89,7 +89,7 @@ def _triggering_event(event: dict):
 @click.option('--once', default=False, help='Run the update script once only.', is_flag=True)
 @click.option('--initial', default=True, help='Run the update script one time before hooking into the docker event stream.', is_flag=True)
 @click_log.simple_verbosity_option(logger)
-def main_event_loop(hosts_file: str, initial: bool, once: bool):
+def main(hosts_file: str, initial: bool, once: bool):
     client = docker.from_env()
     if initial or once:
         if not update_hosts_file(hosts_file):
@@ -109,8 +109,8 @@ def main_event_loop(hosts_file: str, initial: bool, once: bool):
 
         logger.info(f'Got triggering event. type={trigger["Type"]} status={trigger["status"]}')
         if not update_hosts_file(hosts_file):
-            break
+            return -1
 
 
 if __name__ == "__main__":
-    sys.exit(main_event_loop())
+    sys.exit(main()) # pylint: disable=E1120
