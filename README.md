@@ -13,7 +13,7 @@ running in the default `bridge` network will be written to your hosts file somet
 
 ## Install
 ```bash
-sudo pip3 install -U "git+https://github.com/Spielstunde/docker-hosts-update#egg=docker-hosts-update"
+sudo pip3 install -U "git+https://github.com/Tethik/docker-hosts-update#egg=docker-hosts-update"
 ```
 
 
