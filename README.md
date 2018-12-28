@@ -11,6 +11,18 @@ running in the default `bridge` network will be written to your hosts file somet
 172.17.0.4   nginx.bridge
 ```
 
+## Compatibility
+⚠️ Currently this program is only known to work on Linux. 
+
+It will not work on Windows because Windows uses a different location for the hosts file.
+
+Mac OS does not seem to work due to some differences in how the hosts file is written. I'm unsure what these differences are,
+but Mac OS will not correctly apply the changes.
+
+If you are a Mac/Windows user and you want to use this program, let us know that you are interested.
+Of course, we would also appreciate it if you could to contribute the necessary changes.
+
+
 ## Install
 ```bash
 sudo pip3 install -U "git+https://github.com/Tethik/docker-hosts-update#egg=docker-hosts-update"
@@ -53,14 +65,3 @@ WantedBy=multi-user.target
 ```
 
 
-Future features / ideas:
-* configurable host name format
-* whitelist / blacklist
-* deb package
-* user desktop notifications
-* ui to toggle whitelist/blacklist 
-* completely different package `docker-event-template` (like `consul-template` with a better templating language)
-* another os service: hostctl, just for managing the hosts file (with unix socket to communicate over).
-* service security
-    * https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Capabilities
-    * CAP_FOWNER ?
